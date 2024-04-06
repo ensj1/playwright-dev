@@ -1,0 +1,24 @@
+{
+  "name": "playwright_dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "delete:reportFolder": "rm -rf allure-report/ && npx allure generate history",
+    "test:run": "npm run delete:reportFolder && npx playwright test",
+    "merge:reports": "npm run test:run && cp -r allure-results/* history/",
+    "test:run:withReport": "npm run merge:reports && cp -r allure-report/history allure-results/history"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.41.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.2",
+    "@types/node": "^20.11.20",
+    "allure-commandline": "^2.27.0",
+    "allure-playwright": "^2.14.0"
+  }
+}
